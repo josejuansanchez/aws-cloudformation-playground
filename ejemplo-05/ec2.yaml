@@ -1,0 +1,22 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: Ejemplo sencillo de creación de una instancia EC2 con parámetros
+Parameters:
+  ImageId:
+    Type: AWS::EC2::Image::Id
+    Description: ID de la AMI para la instancia
+  InstanceType:
+    Type: String
+    Description: Tipo de instancia
+  KeyName:
+    Type: AWS::EC2::KeyPair::KeyName
+    Description: Nombre de la clave para la instancia
+Resources:
+  MyEC2Instance:
+    Type: AWS::EC2::Instance
+    Properties:
+      ImageId: !Ref ImageId
+      InstanceType: !Ref InstanceType
+      KeyName: !Ref KeyName
+      Tags:
+        - Key: Name
+          Value: instancia-ejemplo-05

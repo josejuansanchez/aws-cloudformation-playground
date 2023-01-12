@@ -1,0 +1,12 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: Ejemplo sencillo de creación de una instancia EC2
+Resources:
+  MyEC2Instance:
+    Type: AWS::EC2::Instance
+    Properties:
+      ImageId: ami-08e637cea2f053dfa
+      InstanceType: t2.micro
+      KeyName: vockey
+      Tags:
+        - Key: Name
+          Value: instancia-ejemplo-01

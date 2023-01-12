@@ -1,0 +1,34 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: |
+  Esta plantilla crea un grupo de seguridad con los puertos 22, 80 y 443 abiertos.
+  También crea una instancia EC2 con la AMI de Ubuntu Server 22.04 y le asocia el grupo de seguridad.
+Resources:
+  MySecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupName: sg_ejemplo-02
+      GroupDescription: Grupo de seguridad del ejemplo-02
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: 22
+          ToPort: 22
+          CidrIp: 0.0.0.0/0
+        - IpProtocol: tcp
+          FromPort: 80
+          ToPort: 80
+          CidrIp: 0.0.0.0/0
+        - IpProtocol: tcp
+          FromPort: 443
+          ToPort: 443
+          CidrIp: 0.0.0.0/0
+  MyEC2Instance:
+    Type: AWS::EC2::Instance
+    Properties:
+      ImageId: ami-06878d265978313ca
+      InstanceType: t2.small
+      SecurityGroups:
+        - !Ref MySecurityGroup
+      KeyName: vockey
+      Tags:
+        - Key: Name
+          Value: instancia-ejemplo-02
