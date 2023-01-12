@@ -18,7 +18,7 @@ aws cloudformation create-stack \
 aws cloudformation describe-stacks --stack-name ejemplo-02
 ```
 
-### Eliminar el _stack_
+## Eliminar el _stack_
 
 ```
 aws cloudformation delete-stack --stack-name ejemplo-02
